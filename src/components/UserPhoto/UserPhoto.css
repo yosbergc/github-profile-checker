@@ -13,8 +13,3 @@ figure img {
     border-radius: 10px;
     width: 100%;
 }
-@media (min-width: 1268px) {
-    figure {
-        left: 100px;
-    }
-}
