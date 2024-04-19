@@ -1,7 +1,7 @@
 import './repositorycomponent.css';
 import { Badge } from '../Badge';
 function RepositoryComponent({repositoryName, repositoryDescription, forks, stars, license}) {
-    return (<article>
+    return (<article className='repository-single'>
         <h3>{repositoryName}</h3>
         <p>{repositoryDescription}</p>
         <footer>

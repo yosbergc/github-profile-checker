@@ -1,0 +1,28 @@
+.repository-single {
+    background: linear-gradient(45deg,#111729, #1D1B48);
+    padding: 20px;
+    color: white;
+    width: 80%;
+    margin: 30px auto;
+    border-radius: 10px;
+}
+.repository-single footer {
+    display: flex;
+    margin-top: 10px;
+    gap: 10px;
+}
+.repository-single h3 {
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.repository-single p {
+    color: #CDD5E0;
+    font-size: 1rem;
+    min-height: 1rem;
+}
+@media (min-width: 1024px) {
+    .repository-single {
+        width: 100%;
+        margin: 0px;
+    }
+}

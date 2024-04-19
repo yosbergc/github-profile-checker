@@ -37,7 +37,7 @@ function AppUI() {
           }
         return <RepositoryComponent
           repositoryName={repository.name}
-          repositoryDescription={repository.userDescription}
+          repositoryDescription={repository.description}
           license={repository.license}
           forks={repository.forks}
           stars={repository.stargazers_count}

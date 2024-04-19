@@ -33,4 +33,12 @@ main {
   .userSummary {
     display: flex;
   }
+  .repositoriesContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: stretch;
+    gap: 20px;
+    padding: 20px;
+    padding-left: 30px;
+  }
 }
