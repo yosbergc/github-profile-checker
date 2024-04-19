@@ -8,3 +8,17 @@ body {
   min-height: 100vh;
   background-color: #21283a;
 }
+.viewAll {
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+}
+.viewAll button {
+  color: #CDD5E0;
+  background: none;
+  border: none;
+  font-size: 1rem;
+}
+.viewAll button:hover {
+  cursor: pointer;
+}

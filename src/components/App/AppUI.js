@@ -6,6 +6,7 @@ import { context } from '../Context/context';
 import { Loading } from '../Loading/loading';
 import { UserInfo } from '../UserInfo';
 import { RepositoryComponent } from '../RepositoryComponent/RepositoryComponent';
+import { ShowMore } from '../ShowMore';
 
 function AppUI() {
   let {currentUser, repositories} = React.useContext(context)
@@ -43,6 +44,9 @@ function AppUI() {
           stars={repository.stargazers_count}
           key={repository.name}/>
           })}
+      </section>
+      <section>
+        {currentUser && repositories.length > 0 && <ShowMore></ShowMore>}
       </section>
       </main>
       </>)
