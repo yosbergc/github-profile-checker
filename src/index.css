@@ -4,3 +4,7 @@
   box-sizing: border-box;
   font-family: "Be Vietnam Pro", sans-serif;
 }
+body {
+  min-height: 100vh;
+  background-color: #21283a;
+}
