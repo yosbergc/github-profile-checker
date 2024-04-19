@@ -10,6 +10,7 @@ import { ShowMore } from '../ShowMore';
 
 function AppUI() {
   let {currentUser, repositories} = React.useContext(context)
+  let [repositoryMax, setRepositoryMax] = React.useState(4);
     return (<>
     <header>
         <SearchComponent/>
@@ -33,7 +34,7 @@ function AppUI() {
       <section className='repositoriesContainer'>
         {!currentUser && <Loading/>}
         {currentUser && repositories.length > 0 && repositories.map((repository, index) => {
-          if (index >= 4) {
+          if (index >= repositoryMax) {
             return [];
           }
         return <RepositoryComponent
@@ -42,11 +43,14 @@ function AppUI() {
           license={repository.license}
           forks={repository.forks}
           stars={repository.stargazers_count}
-          key={repository.name}/>
+          key={repository.name}
+          link={repository.html_url}/>
           })}
       </section>
       <section>
-        {currentUser && repositories.length > 0 && <ShowMore></ShowMore>}
+        {currentUser && repositories.length && (repositories.length !== repositoryMax) > 0 &&<ShowMore 
+        onClick={() => setRepositoryMax(repositories.length)}
+        ></ShowMore>}
       </section>
       </main>
       </>)

@@ -1,7 +1,8 @@
 import './repositorycomponent.css';
 import { Badge } from '../Badge';
-function RepositoryComponent({repositoryName, repositoryDescription, forks, stars, license}) {
-    return (<article className='repository-single'>
+function RepositoryComponent({repositoryName, repositoryDescription, forks, stars, license, link}) {
+    return (<a href={link} target='_blank' rel='noreferrer' className='repository-link'>
+    <article className='repository-single'>
         <h3>{repositoryName}</h3>
         <p>{repositoryDescription}</p>
         <footer>
@@ -9,6 +10,7 @@ function RepositoryComponent({repositoryName, repositoryDescription, forks, star
             <Badge type={"Branch"} text={forks}></Badge>
             <Badge type={"Star"} text={stars}/>
         </footer>
-    </article>);
+    </article>
+    </a>);
 }
 export {RepositoryComponent}
