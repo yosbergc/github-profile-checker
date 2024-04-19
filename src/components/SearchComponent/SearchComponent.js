@@ -3,20 +3,24 @@ import SearchIcon from '../../svg/Search.svg'
 import React from 'react'
 import { context } from '../Context/context'
 function SearchComponent() {
-    let {currentSearch, setCurrentSearch, setCurrentUser, useThrotling, setLoading} = React.useContext(context);
+    let {currentSearch, setCurrentSearch, setCurrentUser, useThrotling, setLoading, setRepositories} = React.useContext(context);
     let handler = useThrotling(currentSearch, 500);
 
-    async function makeAPIRequest(user) {
-            try {
-                let username = user || 'github'
-                let res = await fetch(`https://api.github.com/users/${username}`);
-                let data = await res.json();
-                setCurrentUser(data)
-                setLoading(false);
-            } catch(error) {
-                
-                setLoading(false);
-            }
+    function makeAPIRequest(user) {
+        let username = user || 'github'
+        fetch(`https://api.github.com/users/${username}`)
+        .then(res => res.json())
+        .then(data => {
+            setCurrentUser(data)
+            setLoading(false);
+        }).finally(() => {
+            fetch(`https://api.github.com/users/${username}/repos`)
+            .then(res => res.json())
+            .then(data => {
+                setRepositories(data);
+            })
+        })
+        .catch((error) => console.error(error))
     }
     
     React.useEffect(() => {

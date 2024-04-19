@@ -5,9 +5,10 @@ import { ShortComponent } from '../ShortComponent';
 import { context } from '../Context/context';
 import { Loading } from '../Loading/loading';
 import { UserInfo } from '../UserInfo';
+import { RepositoryComponent } from '../RepositoryComponent/RepositoryComponent';
 
 function AppUI() {
-  let {currentUser} = React.useContext(context)
+  let {currentUser, repositories} = React.useContext(context)
     return (<>
     <header>
         <SearchComponent/>
@@ -29,7 +30,19 @@ function AppUI() {
         {!currentUser ? <Loading/> : <UserInfo username={currentUser.name} userDescription={currentUser.bio}/>}
       </section>
       <section className='repositoriesContainer'>
-        
+        {!currentUser && <Loading/>}
+        {currentUser && repositories.length > 0 && repositories.map((repository, index) => {
+          if (index >= 4) {
+            return [];
+          }
+        return <RepositoryComponent
+          repositoryName={repository.name}
+          repositoryDescription={repository.userDescription}
+          license={repository.license}
+          forks={repository.forks}
+          stars={repository.stargazers_count}
+          key={repository.name}/>
+          })}
       </section>
       </main>
       </>)
