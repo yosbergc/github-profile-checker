@@ -1,0 +1,13 @@
+figure {
+    width: 150px;
+    padding: 10px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #21283a;
+    margin-top: -100px;
+    margin-left: 20px;
+}
+figure img {
+    border-radius: 10px;
+    width: 100%;
+}
