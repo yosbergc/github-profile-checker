@@ -8,3 +8,15 @@ header {
   justify-content: center;
   padding-top: 30px;
 }
+.userSummary {
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+  place-content: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.UpperBody {
+  display: flex;
+  flex-wrap: wrap;
+}

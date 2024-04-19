@@ -1,23 +1,11 @@
 import './App.css';
-import { SearchComponent } from '../SearchComponent/SearchComponent';
-import { UserPhoto } from '../UserPhoto/UserPhoto';
-import { GiveContext } from '../Context';
-import React from 'react';
+import { AppUI } from './AppUI';
+import { GiveContext } from '../Context/context';
+
 function App() {
-  
   return (
     <GiveContext>
-    <header>
-      <SearchComponent/>
-    </header>
-    <section className='UpperBody'>
-      <section className='userProfilePhoto'>
-        <UserPhoto/>
-      </section>
-      <section className='userSummary'>
-        
-      </section>
-    </section>
+      <AppUI/>
     </GiveContext>
   );
 }

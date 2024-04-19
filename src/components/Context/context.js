@@ -1,6 +1,6 @@
 import React from "react";
-
 let context = React.createContext();
+
 function GiveContext({children}) {
     let [currentSearch, setCurrentSearch] = React.useState('');
     let [currentUser, setCurrentUser] = React.useState();

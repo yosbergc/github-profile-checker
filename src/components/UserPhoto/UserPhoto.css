@@ -1,13 +1,20 @@
 figure {
     width: 150px;
+    height: 150px;
     padding: 10px;
     border-radius: 20px;
     overflow: hidden;
     background-color: #21283a;
-    margin-top: -100px;
+    margin-top: -50px;
     margin-left: 20px;
+    display: inline-block;
 }
 figure img {
     border-radius: 10px;
     width: 100%;
+}
+@media (min-width: 1268px) {
+    figure {
+        left: 100px;
+    }
 }

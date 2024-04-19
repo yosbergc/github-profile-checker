@@ -1,10 +1,10 @@
 import './searchcomponent.css'
 import SearchIcon from '../../svg/Search.svg'
 import React from 'react'
-import { context } from '../Context'
+import { context } from '../Context/context'
 function SearchComponent() {
-    let {currentSearch, setCurrentSearch, setCurrentUser, useThrotling} = React.useContext(context);
-    let handler = useThrotling(currentSearch, 1000);
+    let {currentSearch, setCurrentSearch, setCurrentUser, useThrotling, setLoading} = React.useContext(context);
+    let handler = useThrotling(currentSearch, 500);
 
     async function makeAPIRequest(user) {
             try {
@@ -12,8 +12,10 @@ function SearchComponent() {
                 let res = await fetch(`https://api.github.com/users/${username}`);
                 let data = await res.json();
                 setCurrentUser(data)
+                setLoading(false);
             } catch(error) {
-                console.error('Hubo un error: ', error)
+                
+                setLoading(false);
             }
     }
     
