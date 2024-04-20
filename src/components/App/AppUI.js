@@ -8,6 +8,7 @@ import { UserInfo } from '../UserInfo';
 import { RepositoryComponent } from '../RepositoryComponent/RepositoryComponent';
 import { ShowMore } from '../ShowMore';
 import { Modal } from '../Modal';
+import { NoRepositories } from '../NoRepositories';
 function AppUI() {
   let {currentUser, repositories, errorFound, isLoading, currentSearch} = React.useContext(context)
   let [repositoryMax, setRepositoryMax] = React.useState(4);
@@ -56,9 +57,10 @@ function AppUI() {
       <section>
         {errorFound && ''}
         {!errorFound && isLoading && <Loading/>}
-        {!errorFound && !isLoading && (repositories.length !== repositoryMax) > 0 &&<ShowMore 
+        {!errorFound && !isLoading && (repositories.length !== repositoryMax) && repositories.length > 0 &&<ShowMore 
         onClick={() => setRepositoryMax(repositories.length)}
         ></ShowMore>}
+        {!errorFound && !isLoading && repositories.length === 0 && <NoRepositories/>}
       </section>
       </main>
       </>)
