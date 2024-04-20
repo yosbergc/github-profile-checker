@@ -10,7 +10,7 @@ import { ShowMore } from '../ShowMore';
 import { Modal } from '../Modal';
 import { NoRepositories } from '../NoRepositories';
 function AppUI() {
-  let {currentUser, repositories, errorFound, isLoading, currentSearch} = React.useContext(context)
+  let {currentUser, repositories, errorFound, isLoading} = React.useContext(context)
   let [repositoryMax, setRepositoryMax] = React.useState(4);
     return (<>
     <header>
@@ -20,7 +20,7 @@ function AppUI() {
       <section className='UpperBody'>
         <section className='userProfilePhoto'>
           <UserPhoto/>
-          {errorFound && <Modal name={currentSearch}/>}
+          {errorFound && <Modal/>}
         </section>
         <section className='userSummary'>
           {errorFound && ''}
