@@ -1,6 +1,6 @@
+import './Loading.css'
 function Loading() {
-    return (<section>
-        <p>Cargando</p>
+    return (<section className="loader">
     </section>)
 }
 export {Loading}
