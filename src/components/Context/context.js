@@ -6,6 +6,8 @@ function GiveContext({children}) {
     let [currentUser, setCurrentUser] = React.useState();
     let [repositories, setRepositories] = React.useState([]);
     let [isLoading, setLoading] = React.useState(true);
+    let [errorFound, setErrorFound] = React.useState(false);
+    
     function useThrotling (state, delay) {
         let [currentHandler, setCurrentHandler] = React.useState(state);
         React.useEffect(() => {
@@ -27,7 +29,9 @@ function GiveContext({children}) {
         isLoading,
         setLoading,
         repositories,
-        setRepositories
+        setRepositories,
+        errorFound,
+        setErrorFound
     }}>
         {children}
     </context.Provider>)

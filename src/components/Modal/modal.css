@@ -1,0 +1,6 @@
+.modalError {
+    background-color: rgb(150, 5, 5);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}

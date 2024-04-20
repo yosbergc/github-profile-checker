@@ -7,9 +7,9 @@ import { Loading } from '../Loading/loading';
 import { UserInfo } from '../UserInfo';
 import { RepositoryComponent } from '../RepositoryComponent/RepositoryComponent';
 import { ShowMore } from '../ShowMore';
-
+import { Modal } from '../Modal';
 function AppUI() {
-  let {currentUser, repositories} = React.useContext(context)
+  let {currentUser, repositories, errorFound, isLoading, currentSearch} = React.useContext(context)
   let [repositoryMax, setRepositoryMax] = React.useState(4);
     return (<>
     <header>
@@ -19,9 +19,12 @@ function AppUI() {
       <section className='UpperBody'>
         <section className='userProfilePhoto'>
           <UserPhoto/>
+          {errorFound && <Modal name={currentSearch}/>}
         </section>
         <section className='userSummary'>
-          {!currentUser ? <Loading/> : <>
+          {errorFound && ''}
+          {!errorFound && isLoading && <Loading/>}
+          {!errorFound && !isLoading && <>
           <ShortComponent name={"Followers"} property={currentUser.followers}/>
           <ShortComponent name={"Following"} property={currentUser.following}/>
           <ShortComponent name={"Location"} property={currentUser.location}/>
@@ -29,11 +32,14 @@ function AppUI() {
         </section>
       </section>
       <section className='userInfo'>
-        {!currentUser ? <Loading/> : <UserInfo username={currentUser.name} userDescription={currentUser.bio}/>}
+        {errorFound && ''}
+        {!errorFound && isLoading && <Loading/>}
+        {!errorFound && !isLoading && <UserInfo username={currentUser.name} userDescription={currentUser.bio}/>}
       </section>
       <section className='repositoriesContainer'>
-        {!currentUser && <Loading/>}
-        {currentUser && repositories.length > 0 && repositories.map((repository, index) => {
+        {errorFound && ''}
+        {!errorFound && isLoading && <Loading/>}
+        {!errorFound && !isLoading && repositories.length > 0 && repositories.map((repository, index) => {
           if (index >= repositoryMax) {
             return [];
           }
@@ -48,7 +54,9 @@ function AppUI() {
           })}
       </section>
       <section>
-        {currentUser && repositories.length && (repositories.length !== repositoryMax) > 0 &&<ShowMore 
+        {errorFound && ''}
+        {!errorFound && isLoading && <Loading/>}
+        {!errorFound && !isLoading && (repositories.length !== repositoryMax) > 0 &&<ShowMore 
         onClick={() => setRepositoryMax(repositories.length)}
         ></ShowMore>}
       </section>
